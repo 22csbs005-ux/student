@@ -1,0 +1,38 @@
+import java.util.*;
+
+public class StudentGradeTracker {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        List<Integer> grades = new ArrayList<>();
+        
+        System.out.println("Enter student grades (type -1 to stop):");
+        while (true) {
+            int grade = sc.nextInt();
+            if (grade == -1) break;
+            grades.add(grade);
+        }
+        
+        if (grades.isEmpty()) {
+            System.out.println("No grades entered.");
+            return;
+        }
+
+        int sum = 0, max = grades.get(0), min = grades.get(0);
+        for (int g : grades) {
+            sum += g;
+            if (g > max) max = g;
+            if (g < min) min = g;
+        }
+        
+        double avg = (double) sum / grades.size();
+        
+        System.out.println("\n📊 Grade Summary Report:");
+        System.out.println("Total Students: " + grades.size());
+        System.out.println("Grades: " + grades);
+        System.out.println("Average Score: " + avg);
+        System.out.println("Highest Score: " + max);
+        System.out.println("Lowest Score: " + min);
+        
+        sc.close();
+    }
+}
